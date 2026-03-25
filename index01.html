@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+<title>MIS XV MEGAN</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;500&family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+<style>
+
+/* ---------- GENERAL ---------- */
+
+body{
+    margin:0;
+    background:#e9edf2;
+    font-family:'Montserrat', sans-serif;
+}
+/* LINEA AZUL */
+.divider-line{
+    width:100%;
+    height:4px;
+    background:#5f7897;
+}
+/* CONTENEDOR */
+.photo-wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+/* CAPA ENCIMA */
+.sparkles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+/* ESTRELLAS */
+.sparkles span{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:white;
+    border-radius:50%;
+    opacity:0;
+    filter:blur(1px);
+    animation: sparkle 4s infinite;
+}
+
+/* POSICIONES ALEATORIAS */
+.sparkles span:nth-child(1){ top:20%; left:30%; animation-delay:0s;}
+.sparkles span:nth-child(2){ top:40%; left:70%; animation-delay:1s;}
+.sparkles span:nth-child(3){ top:60%; left:20%; animation-delay:2s;}
+.sparkles span:nth-child(4){ top:75%; left:55%; animation-delay:3s;}
+.sparkles span:nth-child(5){ top:35%; left:50%; animation-delay:1.5s;}
+.sparkles span:nth-child(6){ top:10%; left:65%; animation-delay:2.5s;}
+
+/* ANIMACION DESTELLO */
+@keyframes sparkle{
+
+    0%{
+        transform:scale(0);
+        opacity:0;
+    }
+
+    40%{
+        opacity:1;
+        transform:scale(1.8);
+        box-shadow:
+        0 0 8px white,
+        0 0 15px white,
+        0 0 25px #cfe6ff;
+    }
+
+    80%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+/* ---------- HERO ---------- */
+
+.hero{
+    position:relative;
+    height:100vh;
+    color:white;
+    text-align:center;
+    overflow:hidden;
+    background:url("images/PORTADA.png") center/cover no-repeat;
+}
+
+/* Fondo difuminado 
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url("images/PORTADA.png") center/cover no-repeat;
+    filter:blur(8px);
+    transform:scale(1.1);
+}*/
+
+/* capa gris 
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(90,100,115,.55);
+}*/
+
+/* contenido */
+.hero-content{
+    position:relative;
+    z-index:2;
+    padding-top:60px;
+}
+
+/* título */
+.title-small{
+    letter-spacing:4px;
+    font-family:'Playfair Display', serif;
+}
+
+/* nombre */
+.name{
+    font-family:'Great Vibes', cursive;
+    font-size:80px;
+    margin-top:20px;
+}
+
+/* imagen principal */
+.person-img{
+    max-height:520px;
+    margin-top:20px;
+}
+
+/* ---------- PLAYER ---------- */
+
+/* ===== MUSIC SECTION ===== */
+
+.music-section{
+    background:#f4f4f4;
+    text-align:center;
+    padding:30px 0;
+}
+
+.music-player{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+}
+
+.music-player button{
+    border:none;
+    background:none;
+    font-size:24px;
+    color:#5f7897;
+    cursor:pointer;
+}
+
+/* CENTRO */
+.music-center{
+    position:relative;
+    cursor:pointer;
+}
+
+/* CORAZON */
+.heart-icon{
+    font-size:30px;
+    color:#5f7897;
+    transition:.3s;
+}
+
+/* LATIDO */
+.playing .heart-icon{
+    color:#e25555;
+    animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat{
+    0%{transform:scale(1);}
+    25%{transform:scale(1.2);}
+    40%{transform:scale(1);}
+    60%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+/* ONDAS */
+.waves{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    gap:4px;
+    opacity:0;
+}
+
+.waves span{
+    width:3px;
+    height:12px;
+    background:#5f7897;
+    animation:sound 1s infinite ease-in-out;
+}
+
+.waves span:nth-child(2){animation-delay:.2s;}
+.waves span:nth-child(3){animation-delay:.4s;}
+
+.playing .waves{
+    opacity:1;
+}
+
+@keyframes sound{
+    0%,100%{height:8px;}
+    50%{height:20px;}
+}
+/* ---------- TEXTO ---------- */
+
+.message{
+    background:#f4f4f4;
+    padding:50px 25px;
+    text-align:center;
+    color:#6b6b6b;
+    line-height:1.7;
+}
+
+/* ---------- CALENDARIO ---------- */
+
+.calendar-section{
+    background:#f4f4f4;
+    text-align:center;
+    padding-bottom:60px;
+}
+
+.reserve{
+    letter-spacing:3px;
+    color:#7c8aa0;
+}
+
+.month{
+    font-family:'Great Vibes', cursive;
+    font-size:42px;
+    color:#7c8aa0;
+}
+
+.calendar{
+    max-width:320px;
+    margin:auto;
+}
+
+.calendar table{
+    width:100%;
+    color:#7a7a7a;
+}
+
+.calendar td{
+    padding:6px;
+}
+
+.highlight{
+    position:relative;
+    font-weight:bold;
+}
+
+.highlight::after{
+    content:"👑";
+    position:absolute;
+    top:-18px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:18px;
+}
+
+/* flores decorativas */
+.flowers{
+    width:120px;
+    opacity:.8;
+}
+/* CONTADOR */
+.countdown{
+    background:#5f7897;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.countdown h3{
+    font-family:'Great Vibes', cursive;
+}
+
+.time{
+    font-size:40px;
+    letter-spacing:3px;
+}
+
+/* BLOQUES */
+.section-box{
+    background:#f4f4f4;
+    padding:50px 25px;
+    text-align:center;
+    color:#6c6c6c;
+}
+
+/* TITULOS */
+.title-script{
+    font-family:'Great Vibes', cursive;
+    font-size:28px;
+    color:#7a8fa8;
+}
+
+/* NOMBRE EVENTO */
+.big-title{
+    font-family:'Great Vibes', cursive;
+    font-size:60px;
+    color:#5f7897;
+}
+
+/* IMAGEN */
+.event-img{
+    width:100%;
+    border-radius:5px;
+}
+
+/* FECHA */
+.date-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    margin-top:20px;
+}
+
+.date-box h1{
+    font-size:60px;
+    color:#5f7897;
+}
+
+.date-box h5{
+    color:#7a7a7a;
+}
+
+/* BOTONES */
+.btn-custom{
+    background:#5f7897;
+    color:white;
+    border-radius:25px;
+    padding:10px 25px;
+    margin-top:10px;
+}
+
+/* RELOJ */
+.time-icon{
+    font-size:20px;
+}
+/*-----------------------------------------------*/
+/* ================= ITINERARIO ================= */
+
+/* ================= ITINERARIO PREMIUM REAL ================= */
+
+.premium-itinerary{
+    position:relative;
+    background:#f4f5f7;
+    padding:100px 20px;
+    overflow:hidden;
+}
+
+/* ===== FONDO ACUARELA REAL ===== */
+.premium-itinerary::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:url("mancha1.png") no-repeat center/contain;
+    opacity:.15;
+    top:-200px;
+    left:-200px;
+}
+
+.premium-itinerary::after{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:url("mancha2.png") no-repeat center/contain;
+    opacity:.12;
+    bottom:-200px;
+    right:-200px;
+}
+
+/* ===== TITULO ===== */
+.itinerary-title{
+    text-align:center;
+    color:#5f7897;
+    letter-spacing:4px;
+    margin-bottom:80px;
+    font-weight:500;
+}
+
+/* ===== CONTENEDOR ===== */
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+/* ===== LINEA CENTRAL ===== */
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    width:2px;
+    height:0;
+    background:#5f7897;
+    transform:translateX(-50%);
+    transition:height 1.5s ease;
+}
+
+.timeline.active::before{
+    height:100%;
+}
+
+/* ===== FILAS ===== */
+.timeline-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:80px 0;
+    position:relative;
+    opacity:0;
+    transform:translateY(50px);
+    transition:all .8s ease;
+}
+
+.timeline-row.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===== ALTERNANCIA REAL ===== */
+.timeline-row.left{ flex-direction:row; }
+.timeline-row.right{ flex-direction:row-reverse; }
+
+/* ===== INFO ===== */
+.info{
+    width:40%;
+}
+
+.info h5{
+    color:#5f7897;
+    letter-spacing:1px;
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.info span{
+    color:#8a8a8a;
+    font-size:13px;
+}
+
+/* ===== ICONOS ===== */
+.icon{
+    width:40%;
+    text-align:center;
+}
+
+.icon img{
+    width:95px;
+    opacity:0;
+    transform:scale(.8);
+    transition:.6s ease;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+}
+
+.timeline-row.show .icon img{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* ===== CORAZON CENTRAL (ESTILO REAL) ===== */
+.timeline-row::after{
+    content:"❤";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:13px;
+    color:#5f7897;
+    background:#ffffff;
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.08),
+        0 0 8px rgba(95,120,151,.15);
+    z-index:3;
+}
+
+/* LATIDO SUAVE (CASI IMPERCEPTIBLE) */
+.timeline-row.show::after{
+    animation: softBeat 2s infinite;
+}
+
+@keyframes softBeat{
+    0%{transform:translateX(-50%) scale(1);}
+    50%{transform:translateX(-50%) scale(1.12);}
+    100%{transform:translateX(-50%) scale(1);}
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+.timeline::before{ left:20px; }
+
+.timeline-row{
+    flex-direction:column !important;
+    align-items:flex-start;
+    padding-left:50px;
+    margin:50px 0;
+}
+
+.timeline-row::after{
+    left:20px;
+    transform:none;
+}
+
+.info,.icon{
+    width:100%;
+    text-align:left;
+}
+
+.icon img{
+    width:70px;
+    margin-top:10px;
+}
+
+}
+
+/*-------------------------------------------------------------*/
+
+/* ===== COLORES DRESS CODE ===== */
+:root{
+ --main-blue:#5f7897;
+ --light-bg:#f4f4f4;
+}
+/* ================= DRESS CODE ================= */
+
+.dresscode{
+    background:var(--main-blue);
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.dresscode h5{
+    letter-spacing:2px;
+}
+
+.dress-icon{
+    width:120px;
+    margin:20px 0;
+}
+
+.dresscode h3{
+    letter-spacing:3px;
+}
+
+/* ================= REGALOS ================= */
+
+.gift-section{
+    background:var(--light-bg);
+    padding:50px 25px;
+    color:#6f6f6f;
+}
+
+.section-title{
+    color:var(--main-blue);
+    letter-spacing:2px;
+}
+
+.gift-text{
+    max-width:450px;
+    margin:auto;
+}
+
+.gift-icon{
+    width:120px;
+    margin:20px 0;
+}
+
+/* ================= CONFIRMACION ================= */
+
+.confirmation{
+    position:relative;
+    background:url("images/MITADPORTADA.png") center/cover no-repeat;
+    padding:80px 20px;
+    color:white;
+    text-align:center;
+}
+
+.confirmation .overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(95,120,151,.85);
+}
+
+.confirmation-content{
+    position:relative;
+    max-width:600px;
+    margin:auto;
+}
+
+.confirm-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 28px;
+    border:2px solid white;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.confirm-btn:hover{
+    background:white;
+    color:var(--main-blue);
+}
+
+/* ================= PROTOCOLOS ================= */
+
+.protocols{
+    background:var(--light-bg);
+    text-align:center;
+    padding:50px 20px;
+    color:#6a6a6a;
+}
+
+.protocols h5{
+    color:var(--main-blue);
+    margin-bottom:20px;
+}
+
+.protocols ul{
+    list-style:none;
+    padding:0;
+}
+
+.protocols li{
+    margin:10px 0;
+}
+
+.protocols h4{
+    color:var(--main-blue);
+    margin-top:20px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer-invite{
+    background:var(--main-blue);
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.footer-invite h2{
+    font-family:'Great Vibes', cursive;
+}
+
+.footer-invite h1{
+    font-family:'Great Vibes', cursive;
+    font-size:70px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="overlay"></div>
+
+    <div class="container hero-content">
+
+        <!--<h5 class="title-small">MIS XV AÑOS</h5>-->
+
+        <!-- FOTO + BRILLOS -->
+        <div class="photo-wrapper">
+            <!--<img src="images/PORTADA.png" class="img-fluid person-img"> -->
+        </div>
+        <!--<h1 class="name">Dafne</h1>-->
+
+    </div>
+        <div class="sparkles">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+</section>
+<!-- ================= LINEA AZUL ================= -->
+
+<div class="divider-line"></div>
+
+
+<!-- ================= SECCION MUSICA ================= -->
+
+<section class="music-section">
+
+<div class="music-player">
+
+    <button onclick="prev()">⏮</button>
+
+    <div class="music-center" onclick="toggleMusic()">
+
+        <div class="waves">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div id="heartIcon" class="heart-icon">❤</div>
+
+    </div>
+
+    <button onclick="next()">⏭</button>
+    
+</div>
+<audio id="music">
+    <source src="images/AlexWarren_ Ordinary.mp3" type="audio/mpeg">
+</audio>
+<!-- ================= MENSAJE ================= -->
+<section class="message">
+
+<p>
+Hay momentos en la vida que representan un antes y un después.
+El comienzo y el fin de una etapa, y lo que los hace realmente
+especial, son las personas con las que se comparten.
+Quiero que tú seas una de ellas.
+</p>
+
+</section>
+
+        <!-- ================= CALENDARIO ================= -->
+
+        <section class="calendar-section">
+
+        <h5 class="reserve">RESERVA ESTE DÍA</h5>
+
+        <div class="month">Abril</div>
+
+        <div class="calendar mt-3">
+
+        <table>
+        <tr>
+        <td>Lun</td><td>Mar</td><td>Mié</td><td>Jue</td><td>Vie</td><td>Sáb</td><td>Dom</td>
+        </tr>
+
+        <tr>
+        <td></td> <td></td> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td>
+        </tr>
+
+        <tr>
+        <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+        <td class="highlight">8</td>
+        </tr>
+
+        <tr>
+        <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+        </tr>
+
+        <tr>
+        <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+        </tr>
+
+        <tr>
+        <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td></td><td></td>
+        </tr>
+
+        </table>
+
+        </div>
+
+        </section>
+
+</section>
+
+
+<script>
+
+const music = document.getElementById("music");
+const player = document.querySelector(".music-center");
+
+function toggleMusic(){
+
+    if(music.paused){
+        music.play();
+        player.classList.add("playing");
+    }else{
+        music.pause();
+        player.classList.remove("playing");
+    }
+}
+
+function prev(){
+    music.currentTime = 0;
+}
+
+function next(){
+    music.currentTime = music.duration - 1;
+}
+
+</script>
+
+
+<!-- ================= CONTADOR ================= -->
+
+<section class="countdown">
+
+<h3>¡Tan solo faltan!</h3>
+
+<div class="time mt-3" id="countdown">
+00 : 00 : 00 : 00
+</div>
+
+<small>DÍAS &nbsp;&nbsp; HORAS &nbsp;&nbsp; MINUTOS &nbsp;&nbsp; SEGUNDOS</small>
+
+</section>
+
+<!-- ================= SCRIPT CONTADOR ================= -->
+
+<script>
+
+// FECHA DEL EVENTO
+const eventDate = new Date("April 24, 2026 20:30:00").getTime();
+
+const countdown = document.getElementById("countdown");
+
+setInterval(() => {
+
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    countdown.innerHTML =
+        `${days} : ${hours} : ${minutes} : ${seconds}`;
+
+}, 1000);
+
+</script>
+
+<!-- ================= PADRES ================= -->
+
+<section class="section-box">
+
+<h4 class="title-script">Con la Bendición de mi Madre</h4>
+
+<!--<h6 class="mt-4">Mamá</h6>-->
+<!--<p>Alma Varela<br>XXXX XXXX XXXX</p>-->
+<p>Alma Varela</p>
+
+<!--<h6 class="mt-4">PADRINOS</h6>-->
+<!--<p>XXXX XXXX XXXX<br>XXXX XXXX XXXX</p>-->
+
+
+<!-- ================= TITULO ================= -->
+<h4 class="title-script">Tenemos el agrado de invitarte a...</h4>
+
+<h1 class="big-title">Mis 15 Años</h1>
+
+<!-- ================= IMAGEN ================= -->
+
+<img src="images/PORTADA3.png" class="event-img">
+<img src="images/FECHA.png" class="event-img">
+
+<!-- ================= FECHA ================= -->
+
+<!--<div class="date-box">
+
+<div>
+<h5>SÁBADO</h5>
+<h1>07</h1>
+<h5>JUNIO</h5>
+</div>
+
+<div>
+<h1>2025</h1>
+</div>
+
+</div>-->
+
+<!-- BOTÓN GOOGLE CALENDAR -->
+<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+Años&dates=20250607T203000/20250607T233000"
+target="_blank" class="btn btn-custom">
+Agendar Fecha
+</a>
+
+<br>
+<br>
+<!-- ================= RECEPCIÓN ================= -->
+<h5 class="title-script">Recepción</h5>
+
+<p>
+Amberes Social Events Torreón
+</p>
+
+<p>Sierra Nevada 2080</p>
+
+<p class="time-icon">🕒 08:45 PM</p>
+
+<!-- BOTÓN UBICACIÓN -->
+<a href="https://maps.app.goo.gl/Cfq1YEpELYU87LJo9" target="_blank" class="btn btn-custom">
+Ver Ubicación
+</a>
+
+<!-- ================= ITINERARIO ================= -->
+<br>
+<br>
+<h2 class="itinerary-title">ITINERARIO</h2>
+<img src="images/ITINERARIO.png" alt="Descripción de la imagen" class="w-100">
+<!--<section class="itinerary premium-itinerary">
+
+
+<div class="timeline" id="timeline">
+
+    
+    <div class="timeline-row left reveal">
+        <div class="info">
+            <h5>RECEPCIÓN</h5>
+            <span>08:30 PM</span>
+        </div>
+        <div class="icon">
+            <img src="images/IconoCastillo.png">
+        </div>
+    </div>
+
+    <div class="timeline-row right reveal">
+        <div class="icon">
+            <img src="images/IconoPrincesa.png">
+        </div>
+        <div class="info">
+            <h5>CEREMONIA</h5>
+            <span>09:30 PM</span>
+        </div>
+    </div>
+
+    <div class="timeline-row left reveal">
+        <div class="info">
+            <h5>CENA</h5>
+            <span>10:30 PM</span>
+        </div>
+        <div class="icon">
+            <img src="icon3.png">
+        </div>
+    </div>
+
+    <div class="timeline-row right reveal">
+        <div class="icon">
+            <img src="icon4.png">
+        </div>
+        <div class="info">
+            <h5>APERTURA BAR</h5>
+            <span>10:45 PM</span>
+        </div>
+    </div>
+
+</div>
+</section>-->
+<script>
+
+const rows = document.querySelectorAll(".reveal");
+const timeline = document.getElementById("timeline");
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            timeline.classList.add("active");
+            entry.target.classList.add("show");
+        }
+    });
+
+},{ threshold:0.2 });
+
+rows.forEach(row => observer.observe(row));
+
+</script>
+<br>
+<br>
+<!-- ================= CODIGO DE VESTIMENTA ================= -->
+
+<section class="dresscode">
+
+    <h5>CÓDIGO DE VESTIMENTA</h5>
+
+    <img src="images/CodigoVestimenta.png" class="dress-icon">
+
+    <h3>ELEGANTE</h3>
+
+</section>
+
+
+<!-- ================= MESA DE REGALOS ================= -->
+
+<section class="gift-section text-center">
+
+    <h5 class="section-title">LLUVIA DE SOBRES</h5>
+
+    <p class="gift-text">
+        Tu presencia es el mejor regalo que me puedes dar en este día tan especial,
+        pero si aún no sabes qué obsequiarme también cuento con YAPE.
+    </p>
+
+    <img src="images/SOBRE.png" class="gift-icon">
+
+    <p class="small">Haz clic para más detalle</p>
+
+</section>
+
+
+<!-- ================= CONFIRMACION ================= -->
+
+<section class="confirmation">
+
+<div class="overlay"></div>
+
+<div class="confirmation-content">
+
+<h5>CONFIRMACIÓN DE ASISTENCIA</h5>
+
+<p>
+Sin ti este momento no sería igual,
+agradeceremos tu confirmación pero también entenderemos
+si por alguna razón no puedes asistir,
+te pedimos por favor nos lo hagas saber.
+</p>
+
+<a href="https://wa.me/5210000000000" target="_blank"
+class="confirm-btn">
+✉ CONFIRMA TU ASISTENCIA
+</a>
+
+</div>
+</section>
+
+
+<!-- ================= PROTOCOLOS ================= -->
+
+<section class="protocols">
+
+<h5>PROTOCOLOS</h5>
+
+<ul>
+<li>Resérvese el color azul acero para la quinceañera.</li>
+<li>
+Captura los mejores momentos 📸✨<br>
+
+Queremos que formes parte de este día tan especial no solo asistiendo, <br>
+¡sino también guardando recuerdos!
+<br>
+
+Escanea el código QR y sube tus fotos y videos de la fiesta.<br>
+Así podremos revivir juntos cada sonrisa, cada baile y cada instante inolvidable 💖
+</li>
+</ul>
+<img src="images/escaneame-codigo-qr_78370-2915.avif" class="gift-icon">
+
+<h4>#MisQuinceDeDafne</h4>
+
+</section>
+
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<section class="footer-invite">
+
+<h2>Te <br> Esperamos</h2>
+
+<h1>Megan</h1>
+
+</section>
+</body>
+</html>
